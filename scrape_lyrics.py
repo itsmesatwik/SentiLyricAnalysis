@@ -11,8 +11,8 @@ file_name = 'links.json'
 song_urls = json.loads(open(file_name).read())
 
 # Creates a 'websites' folder if it doesn't already exist.
-if not os.path.exists('websites'):
-    os.makedirs('websites')
+if not os.path.exists('songs'):
+    os.makedirs('songs')
 
 requestCount = 0
 for url in song_urls:
@@ -24,9 +24,11 @@ for url in song_urls:
             time.sleep(5)
             continue
     # file_name is artist + song name
-    file_name = 'websites/' + url[19:] + '.txt'
+    file_name = 'songs/' + url[19:] + '.txt'
+    # get html from URL
     html = page.text
     soup = BeautifulSoup(html, 'html5lib')
+    # extract text from lyrics paragraph
     lyrics_div = soup.find_all('div', class_="lyrics")
     lyrics_p = lyrics_div[0].find('p')
     lyrics_text = lyrics_p.text
