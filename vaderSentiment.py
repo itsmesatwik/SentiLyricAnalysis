@@ -7,7 +7,7 @@ VADER sentiment analysis tools:
 """
 
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
-import rhymz
+
 analyzer = SentimentIntensityAnalyzer()
 
 # Assuming we have a list of lyrics sorted chronologically
